@@ -8,7 +8,7 @@ public class CollisionRestart : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter(Collision target) { 
         if (target.gameObject.tag == "Player")  {  
-             SceneManager.LoadScene("SampleScene");  
+             SceneManager.LoadScene("MainScene");  
         }  
     }  
 
@@ -16,7 +16,7 @@ public class CollisionRestart : MonoBehaviour
     void Update()
     {
     if (Input.GetKeyDown("q")) {
-        SceneManager.LoadScene("SampleScene");  
+        SceneManager.LoadScene("MainScene");  
     }
     }
 }

@@ -12,57 +12,45 @@ public class JumpVelocity : MonoBehaviour
 
     // float jumpTime;
 
-    bool jumping;
+    // bool jumping;
 
-    bool stable;
+    // bool stable;
 
     Renderer ren;
 
-    void OnCollisionEnter(Collision target)
-    {
-        if (target.gameObject.tag == "platform")
-        {
-            stable = true;
+    // void OnCollisionEnter(Collision target)
+    // {
+    //     if (target.gameObject.tag == "platform")
+    //     {
+    //         stable = true;
 
-            print("stable true");
-        }
-    }
+    //         print("stable true");
+    //     }
+    // }
+
+
 
     private void Update()
     {
+        // ren = GetComponent<Renderer>();
+        var isStable = gameObject.GetComponent<IsStable>();
+        var isSquish = gameObject.GetComponent<Squish>();
 
-        // if (Input.GetKeyDown(KeyCode.Space) && stable == true)
-        // {
-        //     jumping = true;
-        // }
-        // if (jumping)
-        // {
-        //     stable = false;
-        //     rb.velocity = new Vector3(rb.velocity.x, jumpAmount * 2, jumpAmount);
-        // }
-        // if (Input.GetKeyUp(KeyCode.Space))
-        // {
-        //     jumping = false;
-        // }
-        ren = GetComponent<Renderer>();
-
-        if (Input.GetKey(KeyCode.Space) && stable == true)
+        if (Input.GetKey(KeyCode.Space) && isStable.Get() == true)
         {
+            print("fuckoff");
+            isSquish.Set(true);
             jumpAmount += 0.03f;
-            ren.material.color = Color.red;
+            // ren.material.color = Color.red;
         }
-        if (jumping)
+        if (Input.GetKeyUp(KeyCode.Space) && isStable.Get() == true)
         {
+            print("jumping");
             Vector3 dir = new Vector3(0, 2.5f, 1);
-            stable = false;
+            isStable.Set(false);
             rb.velocity = jumpAmount*dir;
-            jumping = false;
             jumpAmount = 0;
-            ren.material.color = Color.black;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            jumping = true;
+            isSquish.Set(false);
         }
     }
 }
