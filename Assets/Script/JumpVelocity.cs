@@ -45,22 +45,21 @@ public class JumpVelocity : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isStable.Get() == true)
         {
             // print("jumping");
-            Vector3 dir = new Vector3(0, 4, 1);
+            Vector3 dir = new Vector3(0, 5, 2.5f);
             isStable.Set(false);
             rb.velocity = jumpAmount*dir;
-            jumpAmount = 0;
+            jumpAmount = 5;
             isSquish.Set(false);
-            if (isStable.Get() == false) {
-                print("hadfjksnadajsfhoasi");
-                rb.AddForce(rb.velocity+new Vector3(0, -1000.0f, 0)); //increase speed falling
-            }
         }
 
     }
 
-    // void FixedUpdate()
-    // {
-    //     rb.AddForce(new Vector3(0, -1000.0f, 0)*rb.mass);
-    // }
+    void FixedUpdate()
+    {
+        // rb.AddForce(rb.velocity+new Vector3(0, -1000.0f, 0));
+        // rb.AddForce(new Vector3(0, -1000.0f, 0)*rb.mass);
+        Vector3 gravity = -50.0f * 1.0f * Vector3.up;
+        rb.AddForce(gravity, ForceMode.Acceleration);
+    }
 }
 
