@@ -12,7 +12,7 @@ public class IsStable : MonoBehaviour
         {
             stable = true;
 
-            print("stable true");
+            // print("stable true");
 
         }
     }
@@ -35,6 +35,6 @@ public class IsStable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(stable);
+        // print(stable);
     }
 }
