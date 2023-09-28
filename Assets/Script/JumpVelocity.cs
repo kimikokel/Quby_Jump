@@ -56,8 +56,6 @@ public class JumpVelocity : MonoBehaviour
 
     void FixedUpdate()
     {
-        // rb.AddForce(rb.velocity+new Vector3(0, -1000.0f, 0));
-        // rb.AddForce(new Vector3(0, -1000.0f, 0)*rb.mass);
         Vector3 gravity = -50.0f * 1.0f * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
