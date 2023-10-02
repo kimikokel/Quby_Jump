@@ -18,7 +18,7 @@ public class SpawnPlatform : MonoBehaviour
         original = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
-    // var isSquish = gameObject.GetComponent<Squish>();
+    // Squish isSquish = gameObject.GetComponent<Squish>();
 
     void OnCollisionEnter(Collision collision)
     {
@@ -32,7 +32,7 @@ public class SpawnPlatform : MonoBehaviour
         //     );
         //     prevPlat = Instantiate(objectToSpawn, randomPosition + prevPlat.transform, Quaternion.identity);
         // }
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && gameObject.GetComponent<Squish>().Get() == false)
         {
             float ranY = Random.Range(8.5f, -15f);
             float ranZ = Random.Range(-40f, -23f);
@@ -57,6 +57,8 @@ public class SpawnPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameObject.GetComponent<Squish>().Get() == false) {
+            print("false");
+        }
     }
 }
