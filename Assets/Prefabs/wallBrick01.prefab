@@ -68,8 +68,75 @@ PrefabInstance:
       propertyPath: m_Name
       value: wallBrick01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+      propertyPath: m_TagString
+      value: platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -135079621806167313}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3566980178882898872}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7376751139753572913}
   m_SourcePrefab: {fileID: 100100000, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+--- !u!1 &6729870375903075342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b57dcf370a48243f98b3af2904f50e0b, type: 3}
+  m_PrefabInstance: {fileID: 5882867294411792735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-135079621806167313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729870375903075342}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 99.99999, y: 99.99999, z: 99.99999}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3566980178882898872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729870375903075342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf7faa13bec5476d9a1f0661159559a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 2303106655633109763, guid: 82fc46f3a428d44f2a29b4af973b3807, type: 3}
+  minPosition: {x: 0, y: 8.5, z: -40}
+  maxPosition: {x: 0, y: -15, z: -23}
+  prevPlat: {fileID: 7642534218965357623, guid: 8eff6ff3e98064f969122d0272456b57, type: 3}
+--- !u!114 &-7376751139753572913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729870375903075342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfe9d6a2a2565541b453e63c97ffbbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

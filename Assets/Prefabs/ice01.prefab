@@ -68,8 +68,60 @@ PrefabInstance:
       propertyPath: m_Name
       value: ice01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed8b7e645f71e4008a80acaceeb802bb, type: 3}
+      propertyPath: m_TagString
+      value: platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed8b7e645f71e4008a80acaceeb802bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3156956559538067784}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed8b7e645f71e4008a80acaceeb802bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3708251123115814316}
   m_SourcePrefab: {fileID: 100100000, guid: ed8b7e645f71e4008a80acaceeb802bb, type: 3}
+--- !u!1 &2303106655633109763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed8b7e645f71e4008a80acaceeb802bb, type: 3}
+  m_PrefabInstance: {fileID: 1384626661962829394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3156956559538067784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303106655633109763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf7faa13bec5476d9a1f0661159559a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 7642534218965357623, guid: 8eff6ff3e98064f969122d0272456b57, type: 3}
+  minPosition: {x: 0, y: 8.5, z: -40}
+  maxPosition: {x: 0, y: -15, z: -23}
+  prevPlat: {fileID: 6729870375903075342, guid: d4cbd2b5e123d4276b14c47cdfee2f88, type: 3}
+--- !u!65 &-3708251123115814316
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303106655633109763}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 99.99999, y: 99.99999, z: 99.99999}
+  m_Center: {x: 0, y: 0, z: 0}
