@@ -18,18 +18,6 @@ public class JumpVelocity : MonoBehaviour
 
     Renderer ren;
 
-    // void OnCollisionEnter(Collision target)
-    // {
-    //     if (target.gameObject.tag == "platform")
-    //     {
-    //         stable = true;
-
-    //         print("stable true");
-    //     }
-    // }
-
-
-
     private void Update()
     {
         // ren = GetComponent<Renderer>();
@@ -39,7 +27,7 @@ public class JumpVelocity : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isStable.Get() == true)
         {
             isSquish.Set(true);
-            jumpAmount += 0.1f;
+            jumpAmount += 1.5f * Time.deltaTime;
             // ren.material.color = Color.red;
         }
         if (Input.GetKeyUp(KeyCode.Space) && isStable.Get() == true)
@@ -48,7 +36,7 @@ public class JumpVelocity : MonoBehaviour
             Vector3 dir = new Vector3(0, 5, 2.5f);
             isStable.Set(false);
             rb.velocity = jumpAmount*dir;
-            jumpAmount = 5;
+            jumpAmount = 8;
             isSquish.Set(false);
         }
 

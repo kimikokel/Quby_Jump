@@ -8,8 +8,10 @@ public class CollisionRestart : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter(Collision target) { 
         if (target.gameObject.tag == "Player")  {  
-             SceneManager.LoadScene("MainScene");  
+                SpawnPlatform.prevPosition = Vector3.zero;
+                SceneManager.LoadScene("MainScene");  
         }  
+
     }  
 
     // Update is called once per frame

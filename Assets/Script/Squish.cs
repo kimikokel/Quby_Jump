@@ -29,7 +29,7 @@ public class Squish : MonoBehaviour
 
         if (squish)
         {
-            print(trans);
+            // print(trans);
             Vector3 squishy = transform.localScale;
             transform.localScale = new Vector3(squishy.x, squishy.y*0.99f, squishy.z);
         }

@@ -9,13 +9,15 @@ public class SpawnPlatform : MonoBehaviour
     public Vector3 minPosition;
     public Vector3 maxPosition;
 
-    Vector3 original;
-
     public GameObject prevPlat;
+
+    bool isTouched = false;
+
+    public static Vector3 prevPosition = Vector3.zero;
 
     void Start()
     {
-        original = GameObject.FindGameObjectWithTag("Player").transform.position;
+        // prevPosition = Vector3.zero;
     }
 
     // Squish isSquish = gameObject.GetComponent<Squish>();
@@ -32,33 +34,40 @@ public class SpawnPlatform : MonoBehaviour
         //     );
         //     prevPlat = Instantiate(objectToSpawn, randomPosition + prevPlat.transform, Quaternion.identity);
         // }
-        if (collision.gameObject.tag == "Player" && gameObject.GetComponent<Squish>().Get() == false)
+        // if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<Squish>().Get() == false)
+        if (collision.gameObject.tag == "Player" && isTouched == false)
         {
             float ranY = Random.Range(8.5f, -15f);
             float ranZ = Random.Range(-40f, -23f);
-            float oriY = prevPlat.transform.position.y;
-            float oriZ = prevPlat.transform.position.z;
+            // float ranY = 0;
+            // float ranZ = -34;
+
+            float oriY = prevPosition.y;
+            float oriZ = prevPosition.z;
             float newY = oriY - ranY;
             float newZ = oriZ - ranZ;
 
+            isTouched = true;
+
             Vector3 randomPosition = new Vector3(
-             prevPlat.transform.position.x,
+             prevPosition.x,
              newY,
              newZ
-            ); //problem now is spawn too much platform
+            );
 
-            // print("ori y: " + oriY + "\nranY: " + ranY + "\nadded : " + newY);
-            // print("ori z: " + oriZ + "\nranZ: " + ranZ + "\nadded : " + newZ);
+            print("prev:" + prevPosition);
+            print("random:" + randomPosition);
 
-            prevPlat = Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+            Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+            prevPosition = randomPosition;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Squish>().Get() == false) {
-            print("false");
-        }
+        // if (gameObject.GetComponent<Squish>().Get() == false) {
+        //     print("false");
+        // }
     }
 }
