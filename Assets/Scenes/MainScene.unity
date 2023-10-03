@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 917336588}
-  jumpAmount: 8
+  jumpAmount: 5
 --- !u!54 &917336588
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class CollisionRestart : MonoBehaviour
     void Update()
     {
     if (Input.GetKeyDown("q")) {
+        SpawnPlatform.prevPosition = Vector3.zero;
         SceneManager.LoadScene("MainScene");  
     }
     }

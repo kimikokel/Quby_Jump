@@ -11,16 +11,23 @@ public class SpawnPlatform : MonoBehaviour
 
     public GameObject prevPlat;
 
-    bool isTouched = false;
+    int score;
+
+    public bool isTouched = false;
 
     public static Vector3 prevPosition = Vector3.zero;
 
+    AddPoints AP;
+    IsStable isStable;
+
     void Start()
     {
-        // prevPosition = Vector3.zero;
+        AP = GameObject.Find("AddPoints").GetComponent<AddPoints>();
+        isStable = GameObject.Find("IsStable").GetComponent<IsStable>();
     }
 
     // Squish isSquish = gameObject.GetComponent<Squish>();
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -35,17 +42,18 @@ public class SpawnPlatform : MonoBehaviour
         //     prevPlat = Instantiate(objectToSpawn, randomPosition + prevPlat.transform, Quaternion.identity);
         // }
         // if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<Squish>().Get() == false)
+
         if (collision.gameObject.tag == "Player" && isTouched == false)
         {
-            float ranY = Random.Range(8.5f, -15f);
-            float ranZ = Random.Range(-40f, -23f);
+            float ranY = Random.Range(-8.5f, 15f);
+            float ranZ = Random.Range(35f, 15f);
             // float ranY = 0;
             // float ranZ = -34;
 
             float oriY = prevPosition.y;
             float oriZ = prevPosition.z;
-            float newY = oriY - ranY;
-            float newZ = oriZ - ranZ;
+            float newY = oriY + ranY;
+            float newZ = oriZ + ranZ;
 
             isTouched = true;
 
@@ -55,8 +63,16 @@ public class SpawnPlatform : MonoBehaviour
              newZ
             );
 
-            print("prev:" + prevPosition);
-            print("random:" + randomPosition);
+            // if (isStable.Get() == true) {
+            //     print("stable");
+            //     score = AP.Get();
+            //     AP.Set(score+1);
+            // }
+            score = AP.Get();
+            AP.Set(score+1);
+
+            // print("prev:" + prevPosition);
+            // print("random:" + randomPosition);
 
             Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
             prevPosition = randomPosition;

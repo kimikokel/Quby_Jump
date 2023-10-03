@@ -8,13 +8,7 @@ public class JumpVelocity : MonoBehaviour
     // public float buttonTime;
     public float jumpAmount;
 
-    // public float Forward;
-
-    // float jumpTime;
-
     bool jumping;
-
-    // bool stable;
 
     Renderer ren;
 
@@ -27,16 +21,16 @@ public class JumpVelocity : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isStable.Get() == true)
         {
             isSquish.Set(true);
-            jumpAmount += 1.5f * Time.deltaTime;
+            jumpAmount += 4f * Time.deltaTime;
             // ren.material.color = Color.red;
         }
         if (Input.GetKeyUp(KeyCode.Space) && isStable.Get() == true)
         {
             // print("jumping");
-            Vector3 dir = new Vector3(0, 5, 2.5f);
+            Vector3 dir = new Vector3(0, 5.8f, 2f);
             isStable.Set(false);
             rb.velocity = jumpAmount*dir;
-            jumpAmount = 8;
+            jumpAmount = 5;
             isSquish.Set(false);
         }
 
