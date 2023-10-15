@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class JumpVelocity : MonoBehaviour
 {
@@ -10,7 +11,19 @@ public class JumpVelocity : MonoBehaviour
 
     bool jumping;
 
-    Renderer ren;
+    public TMP_Text scoreUI;
+    public TMP_Text levelUI;
+    Vector3 currentEulerAngles;
+
+    bool isKeyDown = false;
+
+    void Start()
+    {
+        scoreUI = GameObject.Find("scoreText").GetComponent<TMP_Text>();
+        levelUI = GameObject.Find("nameText").GetComponent<TMP_Text>();
+        
+        currentEulerAngles = transform.eulerAngles;
+    }
 
     private void Update()
     {
@@ -18,19 +31,26 @@ public class JumpVelocity : MonoBehaviour
         var isStable = gameObject.GetComponent<IsStable>();
         var isSquish = gameObject.GetComponent<Squish>();
 
-        if (Input.GetKey(KeyCode.Space) && isStable.Get() == true)
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) 
         {
-            isSquish.Set(true);
-            jumpAmount += 4f * Time.deltaTime;
-            // ren.material.color = Color.red;
+            isKeyDown = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space) && isStable.Get() == true)
+
+        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))  && isStable.Get() == true && isKeyDown)
         {
-            // print("jumping");
-            Vector3 dir = new Vector3(0, 5.8f, 2f);
+            scoreUI.enabled = false;
+            levelUI.enabled = false;
+            isSquish.Set(true);
+            jumpAmount += 7f * Time.deltaTime;
+            transform.eulerAngles = currentEulerAngles;
+        }
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && isStable.Get() == true)
+        {
+            Vector3 dir = new Vector3(0, 8.8f, 4.2f);
             isStable.Set(false);
             rb.velocity = jumpAmount*dir;
-            jumpAmount = 5;
+            jumpAmount = 7f;
             isSquish.Set(false);
         }
 
@@ -38,7 +58,7 @@ public class JumpVelocity : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 gravity = -50.0f * 1.0f * Vector3.up;
+        Vector3 gravity = -300.0f * 1.0f * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 }

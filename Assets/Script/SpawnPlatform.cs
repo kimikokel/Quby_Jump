@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnPlatform : MonoBehaviour
 {
@@ -19,11 +20,24 @@ public class SpawnPlatform : MonoBehaviour
 
     AddPoints AP;
     IsStable isStable;
+    public TMP_Text scoreUI;
+    public TMP_Text levelUI;
+    Animator scoreAni;
+    Animator levelAni;
+    AudioSource audio;
+
+    List<int> scoreList = new List<int>() {10, 5, 3, 1, 0};
+    List<string> nameList = new List<string>() {"Perfect", "Great", "Good", "OK", "Bye"};
 
     void Start()
     {
         AP = GameObject.Find("AddPoints").GetComponent<AddPoints>();
         isStable = GameObject.Find("IsStable").GetComponent<IsStable>();
+        audio = GameObject.Find("LandingBGM").GetComponent<AudioSource>();
+        scoreUI = GameObject.Find("scoreText").GetComponent<TMP_Text>();
+        levelUI = GameObject.Find("nameText").GetComponent<TMP_Text>();
+        scoreAni = GameObject.Find("scoreText").GetComponent<Animator>();
+        levelAni = GameObject.Find("nameText").GetComponent<Animator>();
     }
 
     // Squish isSquish = gameObject.GetComponent<Squish>();
@@ -32,24 +46,11 @@ public class SpawnPlatform : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        // if (collision.gameObject.tag == "Player" && gameObject.GetComponent<Squish>().Get() == false)
-        // {
-        //     Vector3 randomPosition = new Vector3(
-        //     0,
-        //     Random.Range(minPosition.y, maxPosition.y),
-        //     Random.Range(minPosition.z, maxPosition.z)
-        //     );
-        //     prevPlat = Instantiate(objectToSpawn, randomPosition + prevPlat.transform, Quaternion.identity);
-        // }
-        // if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<Squish>().Get() == false)
-
         if (collision.gameObject.tag == "Player" && isTouched == false)
         {
-            float ranY = Random.Range(-8.5f, 15f);
-            float ranZ = Random.Range(35f, 15f);
-            // float ranY = 0;
-            // float ranZ = -34;
-
+            // float ranY = Random.Range(-8.5f, 15f);
+            float ranZ = Random.Range(20f, 40f);
+            float ranY = 0;
             float oriY = prevPosition.y;
             float oriZ = prevPosition.z;
             float newY = oriY + ranY;
@@ -62,19 +63,67 @@ public class SpawnPlatform : MonoBehaviour
              newY,
              newZ
             );
+            
+            Vector3 blkXZ = new Vector3(prevPosition.x, 0, prevPosition.z);
+            Vector3 plyPos = collision.gameObject.transform.position;
+            Vector3 plyXZ = new Vector3(plyPos.x, 0, plyPos.z);
 
-            // if (isStable.Get() == true) {
-            //     print("stable");
-            //     score = AP.Get();
-            //     AP.Set(score+1);
-            // }
+            float distance = Vector3.Distance(blkXZ, plyXZ);
+            // print(distance);
+
+            int scoreIndex = 0;
+
+            if (0 < distance && distance < 1.5f) {
+                scoreIndex = 0;
+            }
+
+            else if (1.5f < distance && distance < 3.0f) {
+                scoreIndex = 1;
+            }
+            
+            else if (3.0f < distance && distance < 4.5f) {
+                scoreIndex = 2;
+            }
+
+            else if (4.5f < distance && distance < 6.0f) {
+                scoreIndex = 3;
+            }
+
+            else
+            {
+                scoreIndex = 4;
+            }
+
+            print(scoreIndex);
+            print(distance + " " + scoreList[scoreIndex]  + nameList[scoreIndex]);
+            if (!scoreUI)
+            {
+                return;
+            }
+            // print(scoreUI == null);
+            // print(scoreUI.text == null);
+
+            scoreUI.enabled = true;
+            levelUI.enabled = true;
+
+
+            scoreUI.text = "+" + scoreList[scoreIndex].ToString();
+            levelUI.text = nameList[scoreIndex].ToString();
+
+            // scoreAni["scoreUI"].wrapMode = WrapMode.Once;
+            scoreAni.Play("scoreUI", -1, 0f);
+            levelAni.Play("levelUI", -1, 0f);
+
+            audio.Play(0);
+
             score = AP.Get();
-            AP.Set(score+1);
+            AP.Set(score + scoreList[scoreIndex]);
 
             // print("prev:" + prevPosition);
             // print("random:" + randomPosition);
 
-            Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+            GameObject newBlock = Instantiate(objectToSpawn, randomPosition, Quaternion.identity);
+            newBlock.transform.localScale *= Random.Range(0.8f, 1.2f);
             prevPosition = randomPosition;
         }
     }

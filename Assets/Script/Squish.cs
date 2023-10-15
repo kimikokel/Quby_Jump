@@ -29,9 +29,12 @@ public class Squish : MonoBehaviour
 
         if (squish)
         {
-            // print(trans);
             Vector3 squishy = transform.localScale;
-            transform.localScale = new Vector3(squishy.x, squishy.y*0.99f, squishy.z);
+            if (squishy.y > 1.1f)
+            {
+                transform.localScale = new Vector3(squishy.x, squishy.y-1.88f*Time.deltaTime, squishy.z);
+                // transform.localScale = new Vector3(squishy.x, squishy.y*0.88f, squishy.z);
+            }
         }
         if (!squish)
         {

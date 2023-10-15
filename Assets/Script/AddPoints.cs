@@ -5,19 +5,9 @@ using TMPro;
 
 public class AddPoints : MonoBehaviour
 {
-    // bool isTouched = false;
     public TMP_Text scoreUI;
-    private int score = -1;
-
-    // void OnCollisionEnter(Collision target) { 
-    //     if (target.gameObject.tag == "platform")  {  
-    //             // print("before" + isTouched);
-    //             score += 1;
-    //             print(score); 
-    //             // isTouched = true;
-    //             // print("after" + isTouched);
-    //     }  
-    // }  
+    public TMP_Text deadUI;
+    private int score = 0;
 
     public int Get()
     {
@@ -40,6 +30,7 @@ public class AddPoints : MonoBehaviour
     void Update()
     {
         scoreUI.text = score.ToString();
+        deadUI.text = score.ToString();
     }
 }
 
