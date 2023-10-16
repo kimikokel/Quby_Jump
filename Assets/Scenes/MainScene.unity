@@ -363,6 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9063b537d7837a4caeb1174920a531c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadUI: {fileID: 1581446823}
+  dead: 0
 --- !u!4 &604114227
 Transform:
   m_ObjectHideFlags: 0
@@ -438,7 +440,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Hold space to jump
 
-    Press m to mute'
+    Press q to restart'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d9ddd2e16e103d04690e622292d41991, type: 2}
   m_sharedMaterial: {fileID: -9179935889064747228, guid: d9ddd2e16e103d04690e622292d41991, type: 2}
@@ -1986,6 +1988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9063b537d7837a4caeb1174920a531c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadUI: {fileID: 0}
+  dead: 0
 --- !u!114 &1479289056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2400,6 +2404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imgDEAD: {fileID: 1263328694}
   scoreUI: {fileID: 280575969}
+  jumpScript: {fileID: 917336584}
+  dead: 0
 --- !u!4 &1581446825
 Transform:
   m_ObjectHideFlags: 0
