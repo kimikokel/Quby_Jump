@@ -6,12 +6,12 @@ https://kelxdlol.itch.io/quby-jump
 -
 
 Quby, Jump!!!
-
-
-
-Help Quby jump through all the platform and achieve the highest score you can get! 
 -
 
+Help Quby jump through all the platform and achieve the highest score you can get! 
+
+
+:
 Hold Space Bar / Mouse Left Click to jump
 
 The longer you hold the button, the further you can jump!
@@ -19,14 +19,20 @@ The longer you hold the button, the further you can jump!
 Try land closer to the middle of the platform to score higher points!!
 
 Be careful, don't jump too far or too close, or else Quby will fall off and die!!!
--
+:
+
 
 Extra controls:
+-
 Press "m" key to mute
 
 Press "r" to instant restart
--
+
+
+
+
 Game Updates:
+-
 Build v1.0 Initial Build - Oct 8, 2023;
 
 Build v1.1 Bug Fixed - Oct 9, 2023;
@@ -41,9 +47,9 @@ Build v1.2 Added new features - Oct 16, 2023:
 
   - Platform spawning with fade in animation
 
--
-Potential update in the future: 
 
+Potential update in the future: 
+-
  - Leaderboard system
 
  - Better graphics
@@ -51,6 +57,7 @@ Potential update in the future:
 -
 
 Assets:
+-
 - Background
 
     https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cl...
