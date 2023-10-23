@@ -4,7 +4,7 @@ Play Quby_Jump here:
 https://kelxdlol.itch.io/quby-jump
 
 Quby, Jump!!!
-Help Quby jump through all the platform and achieve the highest score you can get!
+Help Quby jump through all the platform and achieve the highest score you can get! \n
 
 
 
